@@ -35,7 +35,7 @@ function subscribe_info()
 				{$lang->subscribe_description1}<br/><br/>{$lang->subscribe_description2}{$extra_links}
 			</td>
 			<td style="text-align: center;">
-				<img src="{$mybb->settings['bburl']}/inc/plugins/subscribe/images/subscribe_logo_80.png" alt="{$lang->subscribe_logo}" title="{$lang->subscribe_logo}"/><br /><br />
+				<img src="{$mybb->settings['bburl']}/inc/plugins/subscribe/images/logo_80.png" alt="{$lang->subscribe_logo}" title="{$lang->subscribe_logo}"/><br /><br />
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="VA5RFLBUC4XM4">
