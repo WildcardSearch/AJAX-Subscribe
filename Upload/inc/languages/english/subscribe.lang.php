@@ -1,4 +1,11 @@
 <?php
+/*
+ * Plugin Name: AJAX Subscribe for MyBB 1.8.x
+ * Copyright 2016 WildcardSearch
+ * http://www.rantcentralforums.com
+ *
+ * forum language file
+ */
 
 $l['subscribe_forum_subscription_added'] = "The selected forum has been added to your forum subscriptions list.";
 

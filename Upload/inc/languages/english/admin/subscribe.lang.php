@@ -1,4 +1,11 @@
 <?php
+/*
+ * Plugin Name: AJAX Subscribe for MyBB 1.8.x
+ * Copyright 2016 WildcardSearch
+ * http://www.rantcentralforums.com
+ *
+ * ACP language file
+ */
 
 $l['subscribe'] = 'AJAX Subscribe';
 
