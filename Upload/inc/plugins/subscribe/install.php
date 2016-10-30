@@ -8,8 +8,7 @@
  */
 
 // disallow direct access to this file for security reasons
-if(!defined('IN_MYBB'))
-{
+if (!defined('IN_MYBB')) {
 	die('Direct initialization of this file is not allowed.<br /><br />Please make sure IN_MYBB is defined.');
 }
 
@@ -22,8 +21,7 @@ function subscribe_info()
 {
 	global $mybb, $lang;
 
-	if(!$lang->subscribe)
-	{
+	if (!$lang->subscribe) {
 		$lang->load('subscribe');
 	}
 

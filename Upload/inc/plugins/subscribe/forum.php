@@ -44,8 +44,7 @@ function subscribe_xmlhttp()
 		$lang->load("forumdisplay");
 
 		$forum = get_forum($data['fid']);
-		if(!$forum)
-		{
+		if (!$forum) {
 			error($lang->error_invalidforum);
 		}
 
@@ -58,8 +57,8 @@ function subscribe_xmlhttp()
 			);
 		} else {
 			$forumpermissions = forum_permissions($forum['fid']);
-			if($forumpermissions['canview'] == 0 || $forumpermissions['canviewthreads'] == 0)
-			{
+			if ($forumpermissions['canview'] == 0 ||
+				$forumpermissions['canviewthreads'] == 0) {
 				error_no_permission();
 			}
 
@@ -80,8 +79,7 @@ function subscribe_xmlhttp()
 	$lang->load("showthread");
 
 	$thread = get_thread($data['tid']);
-	if(!$thread)
-	{
+	if (!$thread) {
 		error($lang->error_invalidthread);
 	}
 
@@ -89,8 +87,8 @@ function subscribe_xmlhttp()
 	$ismod = is_moderator($thread['fid']);
 
 	// Make sure we are looking at a real thread here.
-	if(($thread['visible'] != 1 && $ismod == false) || ($thread['visible'] > 1 && $ismod == true))
-	{
+	if (($thread['visible'] != 1 && $ismod == false) ||
+		($thread['visible'] > 1 && $ismod == true)) {
 		error($lang->error_invalidthread);
 	}
 
@@ -103,8 +101,11 @@ function subscribe_xmlhttp()
 		);
 	} else {
 		$forumpermissions = forum_permissions($thread['fid']);
-		if($forumpermissions['canview'] == 0 || $forumpermissions['canviewthreads'] == 0 || (isset($forumpermissions['canonlyviewownthreads']) && $forumpermissions['canonlyviewownthreads'] != 0 && $thread['uid'] != $mybb->user['uid']))
-		{
+		if ($forumpermissions['canview'] == 0 ||
+			$forumpermissions['canviewthreads'] == 0 ||
+			(isset($forumpermissions['canonlyviewownthreads']) &&
+			$forumpermissions['canonlyviewownthreads'] != 0 &&
+			$thread['uid'] != $mybb->user['uid'])) {
 			error_no_permission();
 		}
 
