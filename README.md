@@ -1,4 +1,4 @@
-# AJAX-Subscribe 0.0.1 BETA
+# AJAX-Subscribe 0.0.2 BETA
 
 <p align="center">
   <img title="Advanced Sidebox Logo" alt="Advanced Sidebox Logo" src="http://i.imgur.com/J8U8BHP.png" />

@@ -62,7 +62,7 @@ EOF;
 		"website" => '',
 		"author" => $author,
 		"authorsite" => 'http://www.rantcentralforums.com',
-		"version" => '0.0.1',
+		"version" => '0.0.2',
 		"compatibility" => '18*',
 		"guid" => '',
 	);
