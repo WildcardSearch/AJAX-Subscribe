@@ -19,15 +19,17 @@ if (!defined('IN_MYBB')) {
  */
 function subscribe_info()
 {
-	global $mybb, $lang;
+	global $cache, $mybb, $lang;
 
 	if (!$lang->subscribe) {
 		$lang->load('subscribe');
 	}
 
-	$button_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/donate.gif';
-	$border_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/pixel.gif';
-	$subscribe_description = <<<EOF
+	$plugin_list = $cache->read("plugins");
+	if ($plugin_list['active']['subscribe']) {
+		$button_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/donate.gif';
+		$border_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/pixel.gif';
+		$subscribe_description = <<<EOF
 <table width="100%">
 	<tbody>
 		<tr>
@@ -47,6 +49,9 @@ function subscribe_info()
 	</tbody>
 </table>
 EOF;
+	} else {
+		$subscribe_description = $lang->subscribe_description1;
+	}
 
 	$name = <<<EOF
 <span style="font-familiy: arial; font-size: 1.5em; color: #686859; text-shadow: 2px 2px 2px #111111;">{$lang->subscribe}</span>
