@@ -8,8 +8,7 @@
  */
 
 // disallow direct access to this file for security reasons
-if(!defined('IN_MYBB'))
-{
+if (!defined('IN_MYBB')) {
 	die('Direct initialization of this file is not allowed.<br /><br />Please make sure IN_MYBB is defined.');
 }
 
@@ -20,16 +19,17 @@ if(!defined('IN_MYBB'))
  */
 function subscribe_info()
 {
-	global $mybb, $lang;
+	global $cache, $mybb, $lang;
 
-	if(!$lang->subscribe)
-	{
+	if (!$lang->subscribe) {
 		$lang->load('subscribe');
 	}
 
-	$button_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/donate.gif';
-	$border_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/pixel.gif';
-	$subscribe_description = <<<EOF
+	$plugin_list = $cache->read("plugins");
+	if ($plugin_list['active']['subscribe']) {
+		$button_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/donate.gif';
+		$border_pic = $mybb->settings['bburl'] . '/inc/plugins/subscribe/images/pixel.gif';
+		$subscribe_description = <<<EOF
 <table width="100%">
 	<tbody>
 		<tr>
@@ -37,7 +37,7 @@ function subscribe_info()
 				{$lang->subscribe_description1}<br/><br/>{$lang->subscribe_description2}{$extra_links}
 			</td>
 			<td style="text-align: center;">
-				<img src="{$mybb->settings['bburl']}/inc/plugins/subscribe/images/subscribe_logo_80.png" alt="{$lang->subscribe_logo}" title="{$lang->subscribe_logo}"/><br /><br />
+				<img src="{$mybb->settings['bburl']}/inc/plugins/subscribe/images/logo_80.png" alt="{$lang->subscribe_logo}" title="{$lang->subscribe_logo}"/><br /><br />
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="VA5RFLBUC4XM4">
@@ -49,6 +49,9 @@ function subscribe_info()
 	</tbody>
 </table>
 EOF;
+	} else {
+		$subscribe_description = $lang->subscribe_description1;
+	}
 
 	$name = <<<EOF
 <span style="font-familiy: arial; font-size: 1.5em; color: #686859; text-shadow: 2px 2px 2px #111111;">{$lang->subscribe}</span>
@@ -64,7 +67,7 @@ EOF;
 		"website" => '',
 		"author" => $author,
 		"authorsite" => 'http://www.rantcentralforums.com',
-		"version" => '0.0.1',
+		"version" => '0.0.2',
 		"compatibility" => '18*',
 		"guid" => '',
 	);

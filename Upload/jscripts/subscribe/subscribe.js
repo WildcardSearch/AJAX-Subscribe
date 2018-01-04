@@ -7,7 +7,7 @@
  * divert functionality to XMLHttp
  */
 
-!function() {
+!function($) {
 	/*
 	 * gather data and execute the request
 	 *
@@ -44,7 +44,8 @@
 	 * @return void
 	 */
 	function onComplete(jqXHR, status) {
-		var response = jqXHR.responseJSON;
+		var response = jqXHR.responseJSON,
+			listEl;
 
 		// error
 		if (response.errors) {
@@ -62,13 +63,27 @@
 
 			// toggle the link text
 			$(this).html(response.linkText);
+
+			// threads have an icon
+			listEl = $(this).closest('li');
+			if (!listEl) {
+				return;
+			}
+
+			// update the image
+			if (listEl.hasClass('subscription_add')) {
+				listEl.removeClass('subscription_add').
+					addClass('subscription_remove');
+			} else {
+				listEl.removeClass('subscription_remove').
+					addClass('subscription_add');
+			}
 		}
 	}
 
 	/*
 	 * observe the links
 	 *
-	 * @param  event
 	 * @return void
 	 */
 	function init() {
@@ -77,4 +92,4 @@
 	}
 
 	$(init);
-}();
+}(jQuery);
